@@ -46,11 +46,13 @@ st.header("Correlation Matrix")
 # Select only numeric columns
 numeric_columns = df.select_dtypes(include=['float64', 'int64']).columns
 
+print(int(len(numeric_columns)))
+
 # Calculate the correlation matrix
 correlation_matrix = df[numeric_columns].corr()
 
 # Create a heatmap using seaborn
-fig, ax = plt.subplots(figsize=(8, 8))
+fig, ax = plt.subplots(figsize=(len(numeric_columns), len(numeric_columns)))
 sns.heatmap(correlation_matrix, annot=True, cmap="coolwarm", ax=ax)
 plt.title("Correlation Matrix")
 
